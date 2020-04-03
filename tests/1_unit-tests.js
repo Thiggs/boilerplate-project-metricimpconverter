@@ -23,28 +23,33 @@ suite('Unit Tests', function(){
     });
     
     test('Decimal Input', function(done) {
-      
-      //done();
+      var input ='3.24Mi'
+      assert.equal(convertHandler.getNum(input), 3.24)
+      done();
     });
     
     test('Fractional Input', function(done) {
-      
-      //done();
+      var input = '3/4xylophone'
+      assert.equal(convertHandler.getNum(input), "3/4")
+      done();
     });
     
     test('Fractional Input w/ Decimal', function(done) {
-      
-      //done();
+      var input = '3.4/5.72KM'
+      assert.equal(convertHandler.getNum(input), "3.4/5.72")
+      done();
     });
     
     test('Invalid Input (double fraction)', function(done) {
-      
-      //done();
+      var input = "5.3/7/2L"
+      assert.equal(convertHandler.getNum(input), "invalid number")
+      done();
     });
     
     test('No Numerical Input', function(done) {
-      
-      //done();
+      var input = "twenty-four mi"
+      assert.equal(convertHandler.getNum(input), "invalid number")
+      done();
     }); 
     
   });

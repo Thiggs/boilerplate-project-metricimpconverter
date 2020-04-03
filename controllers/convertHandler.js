@@ -10,10 +10,15 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
     var result;
-    
-    return result;
+    var regex = /^[+-]?\d+\.?(\d+)?\/?(\d+)?\.?(\d+)?/g;
+    result = input.match(regex);
+    if((input.match(/\//g) || []).length>1){
+      result=""
+    }
+    if (result){return result}
+    else return "invalid number"
   };
-  
+  //
   this.getUnit = function(input) {
     var result;
     
