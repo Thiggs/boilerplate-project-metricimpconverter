@@ -113,9 +113,8 @@ function ConvertHandler() {
     return result;
   };
   
-  this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-    var result;
-    
+  this.getString = function(initNum, returnNum, unit) {
+    var result=initNum+" "+unit[0]+" converts to "+returnNum+" "+unit[1]
     return result;
   };
   

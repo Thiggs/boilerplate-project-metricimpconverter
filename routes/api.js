@@ -25,23 +25,33 @@ module.exports = function (app) {
       var returnUnit;
       var toString;
     
+    let promise = new Promise(function(resolve, reject) {
+  setTimeout(() => resolve(1), 1000);
+});
+    
     function parseInput(input){
-      initNum = convertHandler.getNum(input);
-      initUnit = convertHandler.getUnit(input);
+      initNum = convertHandler.getNum(input)
+      initUnit = convertHandler.getUnit(input)
+      promise.then(convertInput(initNum, initUnit));
     }
     
     function convertInput(initNum, initUnit){
-      unit = convertHandler.spellOutUnit(initUnit);
+      if (initNum==="invalid number"&&initUnit==="invalid unit"){
+        res.send("invalid number and unit")
+      }
+      else if(initNum==="invalid number"){res.send(initNum)}
+      else if(initUnit==="invalid unit"){res.send(initUnit)} 
+      else {
       returnNum = convertHandler.convert(initNum, initUnit);
       returnUnit = convertHandler.getReturnUnit(initUnit);
-    }
+      unit = convertHandler.spellOutUnit(initUnit)
+      promise.then(stringMaker(initNum, returnNum, unit, initUnit, returnUnit))
+    }}
     
-    function stringMaker(initNum, initUnit, returnNum, returnUnit){
-      toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
+    function stringMaker(initNum, returnNum, unit, initUnit, returnUnit){
+      toString = convertHandler.getString(initNum, returnNum, unit)
+      res.json({"initNum":parseFloat(initNum),"initUnit":initUnit,"returnNum":parseFloat(returnNum),"returnUnit":returnUnit,"string":toString})
     }
-
-    parseInput(input).then(convertInput(initNum, initUnit).then(stringMaker(initNum, initUnit, returnNum, returnUnit)))
-    
-      res.json(toString);
+    parseInput(input);
 });
 };

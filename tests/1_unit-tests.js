@@ -111,7 +111,7 @@ suite('Unit Tests', function(){
   suite('Function convertHandler.convert(num, unit)', function() {
     
     test('Gal to L', function(done) {
-      var input = [5, 'Gal'];
+      var input = [5, 'gal'];
       var expected = 18.9271;
       assert.approximately(convertHandler.convert(input[0],input[1]),expected,0.1); //0.1 tolerance
       done();
@@ -119,20 +119,20 @@ suite('Unit Tests', function(){
     
     test('L to Gal', function(done) {
       var expected = 5;
-      var input = [18.9271, 'L'];
+      var input = [18.9271, 'l'];
       assert.approximately(convertHandler.convert(input[0],input[1]),expected,0.1);
       done();
     });
     
     test('Mi to Km', function(done) {
       var expected = 1.60934;
-      var input = [1, 'Mi'];
+      var input = [1, 'mi'];
       assert.approximately(convertHandler.convert(input[0],input[1]),expected,0.1);
       done();
     });  
     
     test('Km to Mi', function(done) {
-      var input = [1.60934, 'Km'];
+      var input = [1.60934, 'km'];
       var expected = 1;
       assert.approximately(convertHandler.convert(input[0],input[1]),expected,0.1);  
       done();
@@ -140,14 +140,14 @@ suite('Unit Tests', function(){
     
     test('Lbs to Kg', function(done) {
       var expected = 0.453592;
-      var input = [1, 'Lbs'];
+      var input = [1, 'lbs'];
       assert.approximately(convertHandler.convert(input[0],input[1]),expected,0.1);  
       done();
     });
 
     test('Kg to Lbs', function(done) {
           var expected = 1;
-      var input = [0.453592, 'Kg'];
+      var input = [0.453592, 'kg'];
       assert.approximately(convertHandler.convert(input[0],input[1]),expected,0.1);    
       done();
     });
