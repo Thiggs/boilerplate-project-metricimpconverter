@@ -60,26 +60,25 @@ suite('Unit Tests', function(){
       var input = ['gal','l','mi','km','lbs','kg','GAL','L','MI','KM','LBS','KG'];
       var matched = false
       input.forEach(function(ele) {
-        if (convertHandler.getUnit(input)===ele){
+        if (convertHandler.getUnit(ele)===ele){
           matched=true
         }
         assert.equal(matched, true)
-      });
+      }); 
       done();
     });
     
     test('Unknown Unit Input', function(done) {
-      var input = ['shoe', 7, 'blah', ""];
+      var input = ['shoe', 'blah'];
       var matched = false
       input.forEach(function(ele) {
-        if (convertHandler.getUnit(input)===ele){
+        if (convertHandler.getUnit(ele)==="invalid unit"){
           matched=true
         }
-        assert.equal(matched, false)
+        assert.equal(matched, true)
       }); 
       done();
     });  
-    
   });
   
   suite('Function convertHandler.getReturnUnit(initUnit)', function() {
