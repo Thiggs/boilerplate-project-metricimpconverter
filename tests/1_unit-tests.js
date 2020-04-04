@@ -30,13 +30,13 @@ suite('Unit Tests', function(){
     
     test('Fractional Input', function(done) {
       var input = '3/4xylophone'
-      assert.equal(convertHandler.getNum(input), "3/4")
+      assert.approximately(convertHandler.getNum(input), .75,.001)
       done();
     });
     
     test('Fractional Input w/ Decimal', function(done) {
       var input = '3.4/5.72KM'
-      assert.equal(convertHandler.getNum(input), "3.4/5.72")
+      assert.approximately(convertHandler.getNum(input), .5944,0.001)
       done();
     });
     
@@ -47,7 +47,7 @@ suite('Unit Tests', function(){
     });
     
     test('No Numerical Input', function(done) {
-      var input = "twenty-four mi"
+      var input = "misdaadfds"
       assert.equal(convertHandler.getNum(input), "invalid number")
       done();
     }); 
@@ -97,10 +97,11 @@ suite('Unit Tests', function(){
   suite('Function convertHandler.spellOutUnit(unit)', function() {
     
     test('For Each Valid Unit Inputs', function(done) {
-      var input = ['gallons','liters','miles','kilometers','pounds','kilograms'];
-      var expect = ['liters','gallons','kilometers','miles','kilograms','pounds'];
+      var input = ['gal','l','mi','km','lbs','kg']
+      var long = ['gallons','liters','miles','kilometers','pounds','kilograms'];
+      var longC = ['liters','gallons','kilometers','miles','kilograms','pounds'];
       input.forEach(function(ele, i) {
-        assert.equal(convertHandler.getReturnUnit(ele), expect[i]);
+        assert.deepEqual(convertHandler.spellOutUnit(ele), [long[i], longC[i]]);
       });
       done();
     });
