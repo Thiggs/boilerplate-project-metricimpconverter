@@ -75,18 +75,20 @@ function ConvertHandler() {
   };
   //
   this.convert = function(initNum, initUnit) {
+
     const galToL = 3.78541;
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
     var input = ['gal','l','mi','km','lbs','kg'];
     var result;
-    
-    switch (    
-      input.forEach(function(ele,i){
-      if (ele===initUnit){
-        return i
-      }
-    })){
+    var switcher;
+   for(var i=0; i<input.length; i++){
+     if(input[i]===initUnit){
+       switcher =i
+     }
+   }
+
+    switch (switcher){
       case 0:
         result = initNum*galToL
         break;
